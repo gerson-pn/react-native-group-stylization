@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
 
 const App = () => {
-
-  const [valor, setValor] = useState(0)
+  const [relogio, setRelogio] = useState(new Date())
 
   const contar = () => {
-    let novoValor = valor + 1
-    setValor(novoValor)
+    setRelogio(new Date())
   }
-  
+
+  useEffect(() => {
+    setInterval(() => {
+      contar(), 1000
+    })
+  })
+
   return (
-    <View style={{ flexDirection: 'row' }}>
-      <View>
-        <Button title='Clique aqui!' onPress={() => contar()} />
-      </View>
-      <View style={{ top: 10 }}><Text style={{ color: 'red' }}>Valor: {valor}</Text></View>
+    <View>
+      <Text>Data: {relogio.toLocaleDateString()}</Text>
+      <Text>Hora: {relogio.toLocaleTimeString()}</Text>
     </View>
   )
 }
