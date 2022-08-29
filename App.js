@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import React from 'react';
+import Cartao from './Cartao';
 
 const App = () => {
-  const [relogio, setRelogio] = useState(new Date())
-
-  const contar = () => {
-    setRelogio(new Date())
-  }
-
-  useEffect(() => {
-    setInterval(() => {
-      contar(), 1000
-    })
-  })
-
+  let urls = [
+    'https://fatecsjc-prd.azurewebsites.net/images/team/docentes/reinaldo_gen_ichiro_arakaki.jpg',
+    'http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4164443U3',
+    'https://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4767313D7',
+    'https://fatecsjc-prd.azurewebsites.net/images/team/docentes/gerson_da_penha_neto.jpg'
+  ]
   return (
-    <View>
-      <Text>Data: {relogio.toLocaleDateString()}</Text>
-      <Text>Hora: {relogio.toLocaleTimeString()}</Text>
-    </View>
+    <>
+      <Cartao url={urls[0]} nome='Reinaldo Arakake' disciplina='Matemática para Computação' />
+      <Cartao url={urls[1]} nome='Cláudio Lima' disciplina='Engenharia de Software' />
+      <Cartao url={urls[2]} nome='Fernando Masanori' disciplina='Algoritmos' />
+      <Cartao url={urls[3]} nome='Gerson Penha' disciplina='Programação Orientada à Objetos' />
+    </>
   )
 }
 export default App
